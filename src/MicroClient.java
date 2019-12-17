@@ -19,9 +19,7 @@ public class MicroClient {
             BufferedReader buffKeyboard = new BufferedReader(new InputStreamReader(System.in));
             while(true){
                 handleNetwork(buffServer);
-                if (handleKeyboard(buffKeyboard, printWriter)){
-                    break; // if the user entered "quit" then break
-                }
+                handleKeyboard(buffKeyboard, printWriter);
                 Thread.sleep(200);
             }
         } catch (Exception e) {
@@ -36,14 +34,13 @@ public class MicroClient {
         }
     }
 
-    private boolean handleKeyboard(BufferedReader buffKey, PrintWriter printWriter) throws IOException {
+    private void handleKeyboard(BufferedReader buffKey, PrintWriter printWriter) throws IOException {
         if(buffKey.ready()){
             String keybMSg = buffKey.readLine();
             printWriter.println(keybMSg);
             if(keybMSg.equalsIgnoreCase("quit")){
-                return true;
+                System.exit(0);
             }
         }
-        return false;
     }
 }
