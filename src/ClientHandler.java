@@ -18,10 +18,8 @@ public class ClientHandler implements Runnable {
         Scanner scanner = null;
         try {
             scanner = new Scanner(socket.getInputStream());
-            // read a line, just as when you read from a file or console
-            System.out.println("Client handler ready.");
             while (true) {
-                if(scanner.hasNextLine()) {
+                if(scanner.hasNextLine()) {  // read a line, just as when you read from a file or console
                     String receivedMsg = scanner.nextLine(); // blocks !!
                     microServer.broadCast(receivedMsg, socket);
                     if (receivedMsg.equalsIgnoreCase("quit")) {

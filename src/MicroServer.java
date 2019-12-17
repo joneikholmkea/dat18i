@@ -14,17 +14,15 @@ public class MicroServer {
     public MicroServer() {
         try {
             ServerSocket serverSocket = new ServerSocket(5555);
-            while (true) {
-                // open connection from clients:
+            System.out.println("Server ready for incoming connections.");
+            while (true) { // open connection from clients:
                 Socket socket = serverSocket.accept(); // accept() blocks until there is a conn.
-                System.out.println("connected!");
-                //clients.add(socket);
+                System.out.println("Connected to client: " + socket.getRemoteSocketAddress());
                 sockets.put(socket, new PrintWriter(socket.getOutputStream(),true));
                 ClientHandler ch = new ClientHandler(socket,this);
                 Thread thread = new Thread(ch);
                 thread.start();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,7 +35,7 @@ public class MicroServer {
 
     public void broadCast(String receivedMsg, Socket socket) {
         for(Map.Entry<Socket, PrintWriter> s: sockets.entrySet()){
-            if(!s.equals(socket)){
+            if(!s.getKey().equals(socket)){
                 s.getValue().println(receivedMsg);
             }
         }
