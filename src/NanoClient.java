@@ -12,9 +12,14 @@ public class NanoClient {
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
             // Send text:
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Type your message: ");
-            String message = scanner.nextLine();
-            printWriter.println(message);
+            while(true) {
+                System.out.print("Type your message: ");
+                String message = scanner.nextLine();
+                printWriter.println(message);
+                if(message.equals("quit")){
+                    break;
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

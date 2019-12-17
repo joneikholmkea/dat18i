@@ -8,13 +8,17 @@ public class NanoServer {
         try {
             ServerSocket serverSocket = new ServerSocket(5555);
             // open connection from clients:
-            while (true) { // move this line !!
-                Socket socket = serverSocket.accept(); // accept() blocks until there is a conn.
+            Socket socket = serverSocket.accept(); // accept() blocks until there is a conn.
                 System.out.println("connected!");
                 // create a "normal" scanner, to read network data
                 Scanner scanner = new Scanner(socket.getInputStream());
                 // read a line, just as when you read from a file or console
-                System.out.println(scanner.nextLine());
+            while (true) { // move this line !!
+                String receivedMsg = scanner.nextLine(); // blocks !!
+                System.out.println(receivedMsg);
+                if(receivedMsg.equalsIgnoreCase("quit")){
+                    break;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
