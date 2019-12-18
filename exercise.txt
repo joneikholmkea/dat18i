@@ -1,0 +1,27 @@
+Exercise 1: 
+a) Send a “Hi There!” from one Java program to another, using Java Socket (on the same computer).
+b) Now send this greeting to a friend’s computer
+
+Exercise 2: Make a Client/Server program, similar to Ex. 1, but with these extra features:
+a) at the client program, the console should ask the user for a message to send.
+b) after typing is done, the user should press RETURN. 
+c) then the Client program should send this message to the Server 
+d) the Server should print that message.
+
+Exercise 3:  Improve the program from Ex. 2 with these features: 
+a) the client console should keep asking for more messages to send to the Server 
+b) for each message, the Server should print it. 
+c) keep doing this, until the user types “quit”
+
+Exercise 4: Improve the program from Ex. 3 with these feature: 
+a) Enable the Server to hold simultaneous connections to multiple Clients.
+
+Exercise 5: Improve the program from Ex. 4 with these features: 
+a) Broadcast an incoming client message to ALL connected Clients 
+b) If a user types “quit” into the Client console, the Server should terminate that client’s connection. 
+
+Exercise 6: Improve the program from Ex. 5 with these features: 
+a) Let each Client have a username, such that messages will be of the form:
+some-name: “Hello There !”
+some-other-name: “How are you doing?”
+etc.
